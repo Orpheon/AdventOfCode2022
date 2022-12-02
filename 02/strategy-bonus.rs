@@ -11,6 +11,7 @@ fn main() {
             if let Ok(line_str) = line {
                 let mut iterator = line_str.chars();
                 let opponent_move = iterator.next().unwrap() as u8 - b'A';
+                // -1 = loss, 0 = draw, +1 = win
                 let outcome = (iterator.nth(1).unwrap() as u8 - b'X') as i32 - 1;
                 let my_move = (opponent_move as i32 + outcome + 3) % 3;
                 score += (my_move as i32 + 1) + (outcome+1) * 3;

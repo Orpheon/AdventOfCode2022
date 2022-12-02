@@ -12,12 +12,12 @@ fn main() {
                 let mut iterator = line_str.chars();
                 let opponent_move = iterator.next().unwrap() as u8 - b'A';
                 let my_move = iterator.nth(1).unwrap() as u8 - b'X';
-                let mut diff = my_move as i32 - opponent_move as i32;
-                // Correct for the modulo
-                if diff.abs() == 2 {
-                    diff = -diff/2;
+                // -1 = loss, 0 = draw, +1 = win
+                let mut outcome = my_move as i32 - opponent_move as i32;
+                if outcome.abs() == 2 {
+                    outcome = -outcome/2;
                 }
-                score += (my_move as i32 + 1) + (diff+1) * 3;
+                score += (my_move as i32 + 1) + (outcome+1) * 3;
             }
         }
         println!("Total score following strategy guide: {}", score);
