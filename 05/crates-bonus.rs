@@ -38,8 +38,7 @@ fn main() {
                     if sections[1] == sections[2] {
                         // Null-op, just skip this line
                         continue;
-                    }
-                    else if sections[1] < sections[2] {
+                    } else if sections[1] < sections[2] {
                         let (left, right) = crate_stacks.split_at_mut(sections[2] - 1);
                         origin = &mut left[sections[1] - 1];
                         dest = &mut right[0];
