@@ -21,7 +21,7 @@ fn main() {
                     }
                     if idx >= start_marker_length - 1 {
                         for i in (0..buffer.len()).rev() {
-                            if c == buffer[i] && skip < start_marker_length - i - 1 {
+                            if skip < start_marker_length - i - 1 && c == buffer[i] {
                                 skip = start_marker_length - i - 1;
                                 // println!("character {} at {} was the same, skipping {}", c, i, skip);
                             }
@@ -34,7 +34,7 @@ fn main() {
                         buffer.pop_back();
                     } else {
                         for i in (0..buffer.len()).rev() {
-                            if c == buffer[i] && skip < start_marker_length - i - 1{
+                            if skip < start_marker_length - i - 1 && c == buffer[i] {
                                 skip = start_marker_length - i - 1;
                                 // println!("character {} at {} was the same, skipping {}", c, i, skip);
                             }
